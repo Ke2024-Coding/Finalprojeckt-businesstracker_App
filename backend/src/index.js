@@ -2,6 +2,7 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 const express = require('express');
+const cors=require('cors')
 const mongoose = require('mongoose');
 const incomeRoutes = require('./routes/income');
 const expenseRoutes = require('./routes/expense');
@@ -13,7 +14,7 @@ const budgetRoutes = require('./routes/budget');
 const app = express();
 
 app.use(express.json());
-
+app.use(cors())
 // Database connection
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB connected'))
